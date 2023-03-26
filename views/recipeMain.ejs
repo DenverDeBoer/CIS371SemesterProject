@@ -1,0 +1,56 @@
+<!-- Denver DeBoer -->
+<!-- The home screen for Slice or Dice -->
+<!-- Will be used to display results of recipe lookup as well as -->
+<!-- provide links to seach and myList screens -->
+<html>
+    <head>
+        <title>SLICEorDICE/title>
+        <style>
+            #title {
+                font-size: 30px;
+                font-style: italic;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .button {
+                padding: 10px 40px;
+                font-size: 16px;
+                margin: 10px;
+                transition-duration: 0.5s;
+                background-color: white;
+                color: black;
+                border: 2px solid green;
+            }
+            .button:hover {
+                background-color: green;
+                color:white;
+            }
+        </style>
+    </head>
+    <body>
+        <!--Page Title-->
+        <div id="title">Slice or Dice</div>
+        <!--Span to act as a menubar -->
+        <span>
+            <a href="/recipeSearch"><button class="button">Search</button></a>
+            <a href="/recipeList"><button class="button">MyList</button></a>
+        </span>
+        <!-- A table to display recipe results -->
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Items</th>
+                <th>Time</th>
+            </tr>
+            <% for(let i = 0; i < 5; i++) { %>  <!--TEMP test data to populate table -->
+                <tr>
+                    <td>IMAGE</td>
+                    <td>NAME</td>
+                    <td>NUMBER</td>
+                    <td>TIME</td>
+                </tr>
+            <% } %>
+        </table>
+    </body>
+</html>
