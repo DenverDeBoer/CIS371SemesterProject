@@ -1,0 +1,62 @@
+<!-- Denver DeBoer -->
+<!-- Page to create a custom list of ingredients -->
+<html>
+    <head>
+        <title>SLICEorDICE</title>
+        <style>
+            #title {
+                font-size: 30px;
+                font-style: italic;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .return {
+                padding: 10px 20px;
+                font-size: 16px;
+                margin: 10px;
+                transition-duration: 0.5s;
+                background-color: darkslategrey;
+                color: black;
+                /*border: 2px solid green;*/
+            }
+            .return:hover {
+                background-color: crimson;
+                color: white;
+            }
+        </style>
+        <script>
+            //An array to hold the ingredients entered in by the user
+            let myList = []
+            //Adds an ingredient to the array
+            function add() {
+                myList.push(document.getElementById("inputBox").value)
+            }
+            //Removes an ingredient from the array
+            function remove() {
+                for(var i = 0; i < myList.length; i++) {
+                    if(myList[i] === document.getElementById("inputBox").value) {
+                        myList.splice(myList[i], 1)
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <span>
+            <!-- Title of recipe -->
+            <div class="title">MyList</div>
+            <!-- Back button -->
+            <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
+        </span>
+        <span>
+            <input type="text" id="inputBox" value="Ingredient:" class="center">
+            <input type="button" value="Add" onclick="add()">
+            <input type="button" value="Remove" onclick="remove()">
+        </span>
+        <div>
+            <% for(var i = 0; i < myList.length; i++) { %>
+                <ul><%= myList[i] %></ul>
+            <% } %>
+        </div>
+    </body>
+</html>
