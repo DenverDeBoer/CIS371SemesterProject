@@ -35,7 +35,7 @@
             function remove() {
                 for(var i = 0; i < myList.length; i++) {
                     if(myList[i] === document.getElementById("inputBox").value) {
-                        myList.splice(myList[i], 1)
+                        myList.splice(i, 1)
                     }
                 }
             }
@@ -48,11 +48,13 @@
             <!-- Back button -->
             <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
         </span>
+        <!-- Span to hold input text box as well as add and remove buttons -->
         <span>
             <input type="text" id="inputBox" value="Ingredient:" class="center">
             <input type="button" value="Add" onclick="add()">
             <input type="button" value="Remove" onclick="remove()">
         </span>
+        <!-- Display the list of ingredients in the user's list -->
         <div>
             <% for(var i = 0; i < myList.length; i++) { %>
                 <ul><%= myList[i] %></ul>
