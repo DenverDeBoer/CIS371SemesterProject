@@ -1,0 +1,47 @@
+<!-- Denver DeBoer -->
+<!-- Specific recipe display for Slice or Dice -->
+<!-- Used to display information such as number of servings, -->
+<!-- estimated time to cook, and list of ingredients needed -->
+<html>
+    <head>
+        <title>SLICEorDICE</title>
+        <style>
+            #title {
+                font-size: 30px;
+                font-style: italic;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .return {
+                padding: 10px 20px;
+                font-size: 16px;
+                margin: 10px;
+                transition-duration: 0.5s;
+                background-color: darkslategrey;
+                color: black;
+                /*border: 2px solid green;*/
+            }
+            .return:hover {
+                background-color: crimson;
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <span>
+            <!-- Title of recipe -->
+            <div class="title">TITLE</div> <!--REPLACE WITH NAME OF RECIPE-->
+            <!-- Back button -->
+            <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
+        </span>
+        <ul>
+            <li>Servings: SERVINGS</li> <!--REPLACE FROM API-->
+            <li>Time: TIME</li><!--REPLACE FROM API-->
+            <li>Ingredients:</li>
+            <% for(let i = 0; i < 5; i++) { %>
+                <dd>- <%= i %> ingredient </dd><!--REPLACE FROM API-->
+            <% } %>
+        </ul>
+        <!--INSTRUCTIONS?-->
+    </body>
+</html>
