@@ -1,0 +1,80 @@
+<!-- Denver DeBoer -->
+<!-- Page used to search for recipes -->
+<!-- User will be able to look up by name, or use custom ingredient list -->
+<html>
+    <head>
+        <title>SLICEorDICE</title>
+        <style>
+            #title {
+                font-size: 30px;
+                font-style: italic;
+                text-align: center;
+                margin: 0 auto;
+            }
+            .return {
+                padding: 10px 20px;
+                font-size: 16px;
+                margin: 10px;
+                transition-duration: 0.5s;
+                background-color: darkslategrey;
+                color: black;
+                /*border: 2px solid green;*/
+            }
+            .return:hover {
+                background-color: crimson;
+                color: white;
+            }
+        </style>
+        <script>
+            /* Various form options will be disabled based on user's choice */
+            function choice() {
+                if(document.getElementById("nameSearch").checked) {
+                    document.getElementById("myListOption").disabled = true;
+                    docuemnt.getElementById("someOp").disabled = true;
+                    document.getElementById("mostOp").disabled = true;
+                    document.getElementById("allOp").disabled = true;
+                    document.getElementById("textBox").disabled = false;
+                }
+                else if(document.getElementById("ingredientSearch").checked) {
+                    document.getElementById("textBox").disabled = true;
+                    document.getElementById("myListOption").disabled = false;
+                    docuemnt.getElementById("someOp").disabled = false;
+                    document.getElementById("mostOp").disabled = false;
+                    document.getElementById("allOp").disabled = false;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <span>
+            <!-- Title of recipe -->
+            <div class="title">MyList</div>
+            <!-- Back button -->
+            <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
+        </span>
+        <!-- Form to get recipe request data -->
+        <form>
+            <!-- First option to allow user to search by name -->
+            <div>
+                <input type="radio" id="nameSearch" name="inputType" value="nameInput" onchange="choice()">
+                <label for="nameSearch">Recipe Name:</label>
+                <input type="text" id="textBox" value="recipeName">
+            </div>
+            <!-- Second option to allow user to search by ingredients -->
+            <div>
+                <input type="radio" id="ingredientSearch" name="inputType" value="ingredientInput" onchange="choice()">
+                <label for="ingredientSearch">Ingredients:</label><br>
+                <input type="checkbox" id="myListOption" name="ingredientBox" value="myListBox">
+                <label for="myListOption">MyList</label><br>
+                <!-- Section to allow user to decide how many ingredients need to match the recipe -->
+                <input type="radio" id="someOp" name="percentage" value="50">
+                <label for="someOp">Some</label>
+                <input type="radio" id="mostOp" name="percentage" value="75">
+                <label for="mostOp">Most</label>
+                <input type="rado" id="allOp" name="percentage" value="100">
+                <label for="allOp">All</label>
+            </div>
+            <input type="submit" name="search" value="Search">
+        </form>     
+    </body>
+</html>
