@@ -15,22 +15,22 @@ app.set('view engine', 'ejs')
 
 //Display main page
 app.get('/recipeMain', (req, res) => {
-    res.render('/views/recipeMain')
+    res.render('recipeMain')
 })
 
 //Display details page
 app.get('/recipeDetails', (req, res) => {
-    res.render('/views/recipeDetails')
+    res.render('recipeDetails')
 })
 
 //Display myList page
 app.get('/recipeList', (req, res) => {
-    res.render('/views/recipeList')
+    res.render('recipeList')
 })
 
 //Display search page
 app.get('/recipeSearch', (req, res) => {
-    res.render('/views/recipeSearch')
+    res.render('recipeSearch')
 })
 
 //Launch the server

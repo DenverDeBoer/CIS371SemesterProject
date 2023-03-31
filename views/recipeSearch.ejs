@@ -29,11 +29,11 @@
             /* Various form options will be disabled based on user's choice */
             function choice() {
                 if(document.getElementById("nameSearch").checked) {
-                    document.getElementById("myListOption").disabled = true;
-                    docuemnt.getElementById("someOp").disabled = true;
+                    document.getElementById("textBox").disabled = false;
+                    docuemnt.getElementById("myListOption").disabled = true;
+                    document.getElementById("someOp").disabled = true;
                     document.getElementById("mostOp").disabled = true;
                     document.getElementById("allOp").disabled = true;
-                    document.getElementById("textBox").disabled = false;
                 }
                 else if(document.getElementById("ingredientSearch").checked) {
                     document.getElementById("textBox").disabled = true;
@@ -71,7 +71,7 @@
                 <label for="someOp">Some</label>
                 <input type="radio" id="mostOp" name="percentage" value="75">
                 <label for="mostOp">Most</label>
-                <input type="rado" id="allOp" name="percentage" value="100">
+                <input type="radio" id="allOp" name="percentage" value="100">
                 <label for="allOp">All</label>
             </div>
             <input type="submit" name="search" value="Search">
