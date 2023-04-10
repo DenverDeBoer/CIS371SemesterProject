@@ -64,5 +64,5 @@ class recipeDB {
     }
 }
 
-recipeDB.db = new splite3.Database('../recipe.sqlite')
+recipeDB.db = new sqlite3.Database('../recipe.sqlite')
 module.exports = recipeDB
