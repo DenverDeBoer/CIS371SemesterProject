@@ -8,6 +8,10 @@
 //Import express module
 const express = require('express')
 
+//Create a controller
+const RecipeController = require('./controller/recipeController')
+const recipeController = new RecipeController()
+
 //Instantiate server and use port 3000
 const app = express()
 const port = 3000
@@ -15,22 +19,22 @@ app.set('view engine', 'ejs')
 
 //Display main page
 app.get('/recipeMain', (req, res) => {
-    res.render('recipeMain')
+    recipeController.index(req, res)
 })
 
 //Display details page
 app.get('/recipeDetails', (req, res) => {
-    res.render('recipeDetails')
+    recipeController.showRecipe(req, res)
 })
 
 //Display myList page
 app.get('/recipeList', (req, res) => {
-    res.render('recipeList')
+    recipeController.showList(req, res)
 })
 
 //Display search page
 app.get('/recipeSearch', (req, res) => {
-    res.render('recipeSearch')
+    recipeController.search(req, res)
 })
 
 //Launch the server
