@@ -28,9 +28,8 @@ app.get('/recipeMain', (req, res) => {
 
 //Post recipeMAIN to update myList
 app.post('/recipeMain', (req, res) => {
-    console.log(req.body.mylist)
     res.render('./recipeMain')
-    //recipeController.update(req, res)
+    recipeController.update(req, res)
 })
 
 //Display details page

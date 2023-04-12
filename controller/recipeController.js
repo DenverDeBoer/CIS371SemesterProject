@@ -32,7 +32,7 @@ class recipeController {
 
     //Send updated myList to DB for storage
     async update(req, res) {
-        //recipeDB.updateList()
+        recipeDB.updateList(req)
     }
 }
 

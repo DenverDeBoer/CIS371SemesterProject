@@ -44,6 +44,7 @@ class recipeDB {
     }
 
     //Add ingredient to MyList
+    //NOT SURE IF NEEDED
     static addIngred(ingredient) {
         let newIngred = new Ingredient(ingredient)
         return new Promise((resolve, _reject) => {
@@ -56,6 +57,7 @@ class recipeDB {
     }
 
     //Delete ingredient from MyList
+    //NOT SURE IF NEEDED
     static deleteIngred(ingredient) {
         this.db.run('DELETE FROM UserList WHERE id=?', [ingredient.id],
         function(_err, _data) {
@@ -63,7 +65,12 @@ class recipeDB {
         })
     }
 
-    //UPDATE method that deletes myList table and replaces with new data?
+    //UPDATE method that deletes myList table and replaces with new data
+    //STORE LIST AS SINGLE ROW IN DB
+    static updateList(ingredients) {
+        console.log(ingredients)
+        this.db.run('UPDATE UserList SET ingred = ?', [ingredients])
+    }
 }
 
 recipeDB.db = new sqlite3.Database('../recipe.sqlite')
