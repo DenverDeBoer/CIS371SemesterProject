@@ -30,6 +30,7 @@
             //Display the myListArray
             function display() {
                 document.getElementById("divList").innerHTML = myList.join("<br>") + ("<br>")
+                document.getElementById('theList').value = myList
             }
             //Adds an ingredient to the array
             function add() {
@@ -55,10 +56,6 @@
             <a href=/recipeMain><input type="button" value="Back" class="right return"></a><br>
         </span>
 
-
-
-
-
         <!-- Form to hold input text box as well as add and remove buttons -->
         <form action="/recipeMain" accept-charset="UTF-8" method="post">
             <span>
@@ -69,15 +66,10 @@
             </span>
             <!-- Display the list of ingredients in the user's list -->
             <div id="divList"></div>
-            <input type="hidden" id="theList" name="mylist" value=<%= list.list %>>
+            <input type="text" id="theList" name="mylist" value=<%= list.list %>>
             <div class="actions">
                 <input type="submit" name="commit" value="Submit">
             </div>
         </form>
-
-
-
-
-
     </body>
 </html>
