@@ -1,15 +1,17 @@
 /*
  * Denver DeBoer
  * Model for an ingredient
- * Consists of a unique ID and a name
+ * Holds an array of strings cooresponding to user ingredients list
 */
 
 class Ingredient {
     constructor(ingredient) {
         if(ingredient) {
-            this.id = ingredient.id
-            this.name = ingredient.name
+            this.list = ingredient
         }
+    }
+    add(ingredient) {
+        this.list = ingredient
     }
 }
 

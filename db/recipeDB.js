@@ -62,6 +62,8 @@ class recipeDB {
             return
         })
     }
+
+    //UPDATE method that deletes myList table and replaces with new data?
 }
 
 recipeDB.db = new sqlite3.Database('../recipe.sqlite')

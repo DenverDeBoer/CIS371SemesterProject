@@ -22,12 +22,17 @@ class recipeController {
 
     //Display MyList page for user ingredients
     async showList(req, res) {
-        res.render('../views/recipeList')
+        res.render('../views/recipeList', {list: new ingredient()})
     }
 
-    //Display recipe search page for API calls
+    //Display recipe search page
     async search(req, res) {
         res.render('../views/recipeSearch')
+    }
+
+    //Send updated myList to DB for storage
+    async update(req, res) {
+        //recipeDB.updateList()
     }
 }
 

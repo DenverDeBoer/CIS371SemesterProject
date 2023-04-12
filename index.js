@@ -8,6 +8,9 @@
 //Import express module
 const express = require('express')
 
+//Body parser to parse post data
+const bodyParser = require('body-parser')
+
 //Create a controller
 const RecipeController = require('./controller/recipeController')
 const recipeController = new RecipeController()
@@ -16,10 +19,18 @@ const recipeController = new RecipeController()
 const app = express()
 const port = 3000
 app.set('view engine', 'ejs')
+app.use(bodyParser.urlencoded({extended:true}))
 
 //Display main page
 app.get('/recipeMain', (req, res) => {
     recipeController.index(req, res)
+})
+
+//Post recipeMAIN to update myList
+app.post('/recipeMain', (req, res) => {
+    console.log(req.body.mylist)
+    res.render('./recipeMain')
+    //recipeController.update(req, res)
 })
 
 //Display details page

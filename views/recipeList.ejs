@@ -25,11 +25,11 @@
             }
         </style>
         <script>
-            var myList = []
+            let myList = []     //PROBABY QUERY DB HERE AND SET myList TO TABLE CONTENTS
 
             //Display the myListArray
             function display() {
-                document.getElementById("theList").innerHTML = myList.join("<br>") + ("<br>")
+                document.getElementById("divList").innerHTML = myList.join("<br>") + ("<br>")
             }
             //Adds an ingredient to the array
             function add() {
@@ -54,14 +54,30 @@
             <!-- Back button -->
             <a href=/recipeMain><input type="button" value="Back" class="right return"></a><br>
         </span>
-        <!-- Span to hold input text box as well as add and remove buttons -->
-        <span>
-            <label for="inputBox">Ingredients:</label>
-            <input type="text" id="inputBox" class="center">
-            <input type="button" value="Add" onClick=add()>
-            <input type="button" value="Remove" onClick=remove()><br>
-        </span>
-        <!-- Display the list of ingredients in the user's list -->
-        <div id="theList"></div>
+
+
+
+
+
+        <!-- Form to hold input text box as well as add and remove buttons -->
+        <form action="/recipeMain" accept-charset="UTF-8" method="post">
+            <span>
+                <label for="inputBox">Ingredients:</label>
+                <input type="text" id="inputBox" class="center">
+                <input type="button" value="Add" onClick=add()>
+                <input type="button" value="Remove" onClick=remove()><br>
+            </span>
+            <!-- Display the list of ingredients in the user's list -->
+            <div id="divList"></div>
+            <input type="hidden" id="theList" name="mylist" value=<%= list.list %>>
+            <div class="actions">
+                <input type="submit" name="commit" value="Submit">
+            </div>
+        </form>
+
+
+
+
+
     </body>
 </html>
