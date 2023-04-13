@@ -17,7 +17,7 @@ class recipeDB {
     static initialize() {
         this.db.serialize(() => {
             //Genreate table to store MyList
-            this.db.run('CREATE TABLE UserList (id INTEGER PRIMARY KEY, ingred TEXT NOT NULL);')
+            this.db.run('CREATE TABLE IF NOT EXISTS UserList (id INTEGER PRIMARY KEY, ingred TEXT NOT NULL);')
         })
     }
 
@@ -68,10 +68,10 @@ class recipeDB {
     //UPDATE method that deletes myList table and replaces with new data
     //STORE LIST AS SINGLE ROW IN DB
     static updateList(ingredients) {
-        console.log(ingredients)
         this.db.run('UPDATE UserList SET ingred = ?', [ingredients])
     }
 }
 
 recipeDB.db = new sqlite3.Database('../recipe.sqlite')
+recipeDB.initialize()
 module.exports = recipeDB
