@@ -24,7 +24,7 @@ function searchName(name) {
     request(getAPI, function(error, response, body) {
         let results = JSON.parse(body)
         //Displays list of ingredient info
-        console.log(results.hits[0].recipe.ingredients)
+        //console.log(results.hits[0].recipe.ingredients)
     })
 }
 

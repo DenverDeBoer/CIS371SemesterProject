@@ -27,7 +27,8 @@ class recipeController {
 
     //Display recipe search page
     async search(req, res) {
-        res.render('../views/recipeSearch')
+        let myList = await recipeDB.getMyList()
+        res.render('../views/recipeSearch', {uList: myList})
     }
 
     //Send updated myList to DB for storage

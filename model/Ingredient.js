@@ -4,14 +4,16 @@
  * Holds an array of strings cooresponding to user ingredients list
 */
 
+//Parameter is an array of user provided ingredients
 class Ingredient {
-    constructor(ingredient) {
-        if(ingredient) {
-            this.list = ingredient
+    constructor(ingredients) {
+        if(ingredients) {
+            this.id = "myList"
+            this.list = ingredients
         }
     }
-    add(ingredient) {
-        this.list = ingredient
+    add(ingredients) {
+        this.list = ingredients
     }
 }
 

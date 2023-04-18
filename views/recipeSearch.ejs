@@ -30,14 +30,12 @@
             function choice() {
                 if(document.getElementById("nameSearch").checked) {
                     document.getElementById("textBox").disabled = false;
-                    document.getElementById("myListOption").disabled = true;
                     document.getElementById("someOp").disabled = true;
                     document.getElementById("mostOp").disabled = true;
                     document.getElementById("allOp").disabled = true;
                 }
                 else if(document.getElementById("ingredientSearch").checked) {
                     document.getElementById("textBox").disabled = true;
-                    document.getElementById("myListOption").disabled = false;
                     document.getElementById("someOp").disabled = false;
                     document.getElementById("mostOp").disabled = false;
                     document.getElementById("allOp").disabled = false;
@@ -63,9 +61,9 @@
             <!-- Second option to allow user to search by ingredients -->
             <div>
                 <input type="radio" id="ingredientSearch" name="inputType" value="ingredientInput" onchange="choice()">
-                <label for="ingredientSearch">Ingredients:</label><br>
-                <input type="checkbox" id="myListOption" name="ingredientBox" value="myListBox">
-                <label for="myListOption">MyList</label><br>
+                <label for="ingredientSearch">MyList:</label><br>
+                <!-- Loop to display current values of myList in DB -->
+                <% console.log(uList) %>
                 <!-- Section to allow user to decide how many ingredients need to match the recipe -->
                 <input type="radio" id="someOp" name="percentage" value="50">
                 <label for="someOp">Some</label>
