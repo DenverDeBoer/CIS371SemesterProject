@@ -18,14 +18,16 @@ const apiURL = apiDomain + "&app_id=" + apiID + "&app_key=" + apiKey
 //Used for sending URL request
 const request = require("request")
 
-//Function used to created API URL based on recipe name
-function searchName(name) {
-    getAPI = apiURL + "&q=" + encodeURI(name)
-    request(getAPI, function(error, response, body) {
-        let results = JSON.parse(body)
-        //Displays list of ingredient info
-        //console.log(results.hits[0].recipe.ingredients)
-    })
+class recipeAPI {
+    //Function used to created API URL based on recipe name
+    static searchName(name) {
+        let getAPI = apiURL + "&q=" + encodeURI(name)
+        //request(getAPI, function(error, response, body) {
+        //    let results = JSON.parse(body)
+        //    response(results)
+        //})
+        return fetch(getAPI).then((res) => res.json())
+    }
 }
 
-searchName("Beef dumplings")
+module.exports = recipeAPI

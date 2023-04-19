@@ -24,6 +24,9 @@
                 background-color: crimson;
                 color: white;
             }
+            .food {
+                margin-left: 20px;
+            }
         </style>
         <script>
             /* Various form options will be disabled based on user's choice */
@@ -51,25 +54,28 @@
             <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
         </span>
         <!-- Form to get recipe request data -->
-        <form>
+        <form action="/recipeSearch" accept-charset="UTF-8" method="post">
             <!-- First option to allow user to search by name -->
             <div>
                 <input type="radio" id="nameSearch" name="inputType" value="nameInput" onchange="choice()">
                 <label for="nameSearch">Recipe Name:</label>
-                <input type="text" id="textBox" value="recipeName">
+                <input type="text" id="textBox" name="textBoxName" value="Recipe Name">
             </div>
             <!-- Second option to allow user to search by ingredients -->
             <div>
-                <input type="radio" id="ingredientSearch" name="inputType" value="ingredientInput" onchange="choice()">
+                <input type="radio" id="ingredientSearch" name="inputType" value="<%= uList %>" onchange="choice()">
                 <label for="ingredientSearch">MyList:</label><br>
                 <!-- Loop to display current values of myList in DB -->
-                <% console.log(uList) %>
+                <% let food = uList[0].ingred.split(",") %>
+                <% for(let f of food) { %>
+                    <span class="food">- <%= f %><br></span>
+                <% } %>
                 <!-- Section to allow user to decide how many ingredients need to match the recipe -->
-                <input type="radio" id="someOp" name="percentage" value="50">
+                <input type="radio" class="food" id="someOp" name="percentage" value="50">
                 <label for="someOp">Some</label>
-                <input type="radio" id="mostOp" name="percentage" value="75">
+                <input type="radio" class="food" id="mostOp" name="percentage" value="75">
                 <label for="mostOp">Most</label>
-                <input type="radio" id="allOp" name="percentage" value="100">
+                <input type="radio" class="food" id="allOp" name="percentage" value="100">
                 <label for="allOp">All</label>
             </div>
             <input type="submit" name="search" value="Search">

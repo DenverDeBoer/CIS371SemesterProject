@@ -24,8 +24,35 @@
                 color: white;
             }
         </style>
+    </head>
+    <body>
+        <span>
+            <!-- Title of recipe -->
+            <div id="title">MyList</div>
+            <!-- Back button -->
+            <a href=/recipeMain><input type="button" value="Back" class="right return"></a><br>
+        </span>
+
+        <!-- Form to hold input text box as well as add and remove buttons -->
+        <form action="/recipeList" accept-charset="UTF-8" method="post">
+            <span>
+                <label for="inputBox">Ingredients:</label>
+                <input type="text" id="inputBox" class="center">
+                <input type="button" value="Add" onClick=add()>
+                <input type="button" value="Remove" onClick=remove()><br>
+            </span>
+            <!-- Display the list of ingredients in the user's list -->
+            <div id="divList"></div>
+            <input type="hidden" id="theList" name="mylist" value=" ">
+            <div class="actions">
+                <input type="submit" name="commit" value="Submit">
+            </div>
+        </form>
         <script>
-            let myList = []     //PROBABY QUERY DB HERE AND SET myList TO TABLE CONTENTS
+            let testList = ['<%-uList[0].ingred%>']
+            let myList = []
+            myList = testList[0].split(",")
+            display()
 
             //Display the myListArray
             function display() {
@@ -47,29 +74,5 @@
                 display()
             }
         </script>
-    </head>
-    <body>
-        <span>
-            <!-- Title of recipe -->
-            <div id="title">MyList</div>
-            <!-- Back button -->
-            <a href=/recipeMain><input type="button" value="Back" class="right return"></a><br>
-        </span>
-
-        <!-- Form to hold input text box as well as add and remove buttons -->
-        <form action="/recipeMain" accept-charset="UTF-8" method="post">
-            <span>
-                <label for="inputBox">Ingredients:</label>
-                <input type="text" id="inputBox" class="center">
-                <input type="button" value="Add" onClick=add()>
-                <input type="button" value="Remove" onClick=remove()><br>
-            </span>
-            <!-- Display the list of ingredients in the user's list -->
-            <div id="divList"></div>
-            <input type="hidden" id="theList" name="mylist" value=<%= list.list %>>
-            <div class="actions">
-                <input type="submit" name="commit" value="Submit">
-            </div>
-        </form>
     </body>
 </html>

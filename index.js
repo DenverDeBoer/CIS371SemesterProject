@@ -26,12 +26,6 @@ app.get('/recipeMain', (req, res) => {
     recipeController.index(req, res)
 })
 
-//Post recipeMAIN to update myList
-app.post('/recipeMain', (req, res) => {
-    res.render('./recipeMain')
-    recipeController.update(req, res)
-})
-
 //Display details page
 app.get('/recipeDetails', (req, res) => {
     recipeController.showRecipe(req, res)
@@ -42,9 +36,19 @@ app.get('/recipeList', (req, res) => {
     recipeController.showList(req, res)
 })
 
+//Post recipeList to update myList
+app.post('/recipeList', (req, res) => {
+    recipeController.update(req, res)
+})
+
 //Display search page
 app.get('/recipeSearch', (req, res) => {
     recipeController.search(req, res)
+})
+
+//Post recipeSearch for API request
+app.post('/recipeSearch', (req, res) => {
+    recipeController.request(req, res)
 })
 
 //Launch the server

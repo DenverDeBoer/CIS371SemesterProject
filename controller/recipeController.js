@@ -6,6 +6,7 @@
 */
 const ingredient = require('../model/Ingredient')
 const recipeDB = require('../db/recipeDB')
+const apiRecipe = require('../api/recipeAPI')
 
 //Utilize standard CRUD operations
 class recipeController {
@@ -22,7 +23,8 @@ class recipeController {
 
     //Display MyList page for user ingredients
     async showList(req, res) {
-        res.render('../views/recipeList', {list: new ingredient()})
+        let myList = await recipeDB.getMyList()
+        res.render('../views/recipeList', {uList: myList})
     }
 
     //Display recipe search page
@@ -34,6 +36,13 @@ class recipeController {
     //Send updated myList to DB for storage
     async update(req, res) {
         recipeDB.updateList(req.body.mylist)
+        this.search(req, res)
+    }
+
+    //Send API request
+    async request(req, res) {
+        let results = await apiRecipe.searchName(req.body.textBoxName)
+        res.render('../views/recipeMain', {data: results})
     }
 }
 
