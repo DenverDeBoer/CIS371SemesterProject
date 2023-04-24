@@ -27,7 +27,7 @@ app.get('/recipeMain', (req, res) => {
 })
 
 //Display details page
-app.get('/recipeDetails', (req, res) => {
+app.post('/recipeDetails', (req, res) => {
     recipeController.showRecipe(req, res)
 })
 

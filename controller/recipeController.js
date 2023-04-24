@@ -18,7 +18,8 @@ class recipeController {
     //Display specific recipe details
     //TODO: isolate uniqueness from API call and link
     async showRecipe(req, res) {
-        res.render('../views/recipeDetails')
+        console.log("CONTROL: " + req)
+        res.render('../views/recipeDetails', {recipeData: req.body.recipeData})
     }
 
     //Display MyList page for user ingredients

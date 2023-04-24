@@ -2,10 +2,14 @@
 <!-- Page to create a custom list of ingredients -->
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <title>SLICEorDICE</title>
         <style>
             #title {
-                font-size: 30px;
+                font-size: 50px;
                 font-style: italic;
                 text-align: center;
                 margin: 0 auto;
@@ -15,7 +19,7 @@
                 font-size: 16px;
                 margin: 10px;
                 transition-duration: 0.5s;
-                background-color: darkslategrey;
+                background-color: lightslategrey;
                 color: black;
                 /*border: 2px solid green;*/
             }
@@ -26,12 +30,19 @@
         </style>
     </head>
     <body>
-        <span>
-            <!-- Title of recipe -->
-            <div id="title">MyList</div>
-            <!-- Back button -->
-            <a href=/recipeMain><input type="button" value="Back" class="right return"></a><br>
-        </span>
+        <!--Page Title-->
+        <div id="title">MyList</div>
+
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/recipeSearch">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/recipeMain">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/recipeList">MyList</a></li>
+                </ul>
+            </div>
+        </nav>
 
         <!-- Form to hold input text box as well as add and remove buttons -->
         <form action="/recipeList" accept-charset="UTF-8" method="post">

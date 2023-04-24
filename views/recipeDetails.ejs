@@ -17,7 +17,7 @@
                 font-size: 16px;
                 margin: 10px;
                 transition-duration: 0.5s;
-                background-color: darkslategrey;
+                background-color: lightslategrey;
                 color: black;
                 /*border: 2px solid green;*/
             }
@@ -38,10 +38,10 @@
             <li>Servings: SERVINGS</li> <!--REPLACE FROM API-->
             <li>Time: TIME</li><!--REPLACE FROM API-->
             <li>Ingredients:</li>
+            <li><% console.log(recipeData) %></li>
             <% for(let i = 0; i < 5; i++) { %>
                 <dd>- <%= i %> ingredient </dd><!--REPLACE FROM API-->
             <% } %>
         </ul>
-        <!--INSTRUCTIONS?-->
     </body>
 </html>

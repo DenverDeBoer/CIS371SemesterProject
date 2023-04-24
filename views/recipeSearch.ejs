@@ -3,26 +3,24 @@
 <!-- User will be able to look up by name, or use custom ingredient list -->
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <title>SLICEorDICE</title>
         <style>
             #title {
-                font-size: 30px;
+                font-size: 50px;
                 font-style: italic;
                 text-align: center;
                 margin: 0 auto;
             }
-            .return {
-                padding: 10px 20px;
-                font-size: 16px;
-                margin: 10px;
-                transition-duration: 0.5s;
-                background-color: darkslategrey;
-                color: black;
-                /*border: 2px solid green;*/
+            form {
+                width: fit-content;
+                margin: 10 auto;
             }
-            .return:hover {
-                background-color: crimson;
-                color: white;
+            #search {
+                text-align: center;
             }
             .food {
                 margin-left: 20px;
@@ -47,22 +45,29 @@
         </script>
     </head>
     <body>
-        <span>
-            <!-- Title of recipe -->
-            <div id="title">Search</div>
-            <!-- Back button -->
-            <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
-        </span>
+        <!--Page Title-->
+        <div id="title">Search</div>
+
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="/recipeSearch">Search</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/recipeMain">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/recipeList">MyList</a></li>
+                </ul>
+            </div>
+        </nav>
         <!-- Form to get recipe request data -->
         <form action="/recipeSearch" accept-charset="UTF-8" method="post">
             <!-- First option to allow user to search by name -->
-            <div>
+            <span>
                 <input type="radio" id="nameSearch" name="inputType" value="nameInput" onchange="choice()">
                 <label for="nameSearch">Recipe Name:</label>
-                <input type="text" id="textBox" name="textBoxName" value="Recipe Name">
-            </div>
+                <input type="text" id="textBox" name="textBoxName" value=" ">
+            </span><br>
             <!-- Second option to allow user to search by ingredients -->
-            <div>
+            <span>
                 <input type="radio" id="ingredientSearch" name="inputType" value="<%= uList %>" onchange="choice()">
                 <label for="ingredientSearch">MyList:</label><br>
                 <!-- Loop to display current values of myList in DB -->
@@ -71,14 +76,19 @@
                     <span class="food">- <%= f %><br></span>
                 <% } %>
                 <!-- Section to allow user to decide how many ingredients need to match the recipe -->
-                <input type="radio" class="food" id="someOp" name="percentage" value="50">
-                <label for="someOp">Some</label>
-                <input type="radio" class="food" id="mostOp" name="percentage" value="75">
-                <label for="mostOp">Most</label>
-                <input type="radio" class="food" id="allOp" name="percentage" value="100">
-                <label for="allOp">All</label>
-            </div>
-            <input type="submit" name="search" value="Search">
+                <span id="numOptions">
+                    <input type="radio" class="food" id="someOp" name="percentage" value="50">
+                    <label for="someOp">Some</label>
+                    <input type="radio" class="food" id="mostOp" name="percentage" value="75">
+                    <label for="mostOp">Most</label>
+                    <input type="radio" class="food" id="allOp" name="percentage" value="100">
+                    <label for="allOp">All</label>
+                </span>
+                <label for="numOptions">Select number of ingredients to use: </label>
+            </span><br>
+            <span>
+                <input type="submit" id="search" name="search" value="Search">
+            </span>
         </form>     
     </body>
 </html>

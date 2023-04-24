@@ -4,10 +4,14 @@
 <!-- provide links to seach and myList screens -->
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <title>SLICEorDICE</title>
         <style>
             #title {
-                font-size: 30px;
+                font-size: 50px;
                 font-style: italic;
                 text-align: center;
                 margin: 0 auto;
@@ -17,9 +21,8 @@
                 font-size: 16px;
                 margin: 10px;
                 transition-duration: 0.5s;
-                background-color: darkslategrey;
+                background-color: lightslategrey;
                 color: black;
-                /*border: 2px solid green;*/
             }
             .button:hover {
                 background-color: green;
@@ -30,30 +33,51 @@
     <body>
         <!--Page Title-->
         <div id="title">Slice or Dice</div>
-        <!--Span to act as a menubar -->
-        <span>
-            <a href="/recipeSearch"><input type="button" value="Search" class="button left"></a>
-            <a href="/recipeList"><input type="button" value="MyList" class="button right"></a>
-        </span>
+
+        <!-- Nav bar -->
+        <nav class="navbar navbar-expand navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="/recipeSearch">Search</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/recipeMain">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/recipeList">MyList</a></li>
+                </ul>
+            </div>
+        </nav>
         <!-- A table to display recipe results -->
-        <table>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Yields</th>
-                <th>Time</th>
-            </tr>
-            <% if(typeof data != 'undefined') { %>
-                <% for(let i = 0; i < data.hits.length; i++) { %>
-                    <tr>
-                        <td><img src="<%= data.hits[i].recipe.images.THUMBNAIL.url %>" width="100" height="100"></td>
-                        <td><%= data.hits[i].recipe.label %></td>
-                        <td><%= data.hits[i].recipe.yield %></td>
-                        <td><%= data.hits[i].recipe.totalTime %></td>
-                        <td><input type="button" value="View"></td>
-                    </tr>
+        <table class="table table-hover table-striped mx-auto w-auto">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Yields</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if(typeof data != 'undefined') { %>
+                    <% for(let i = 0; i < data.hits.length; i++) { %>
+                        <tr>
+                            <td scope="row"><img src="<%= data.hits[i].recipe.images.THUMBNAIL.url %>" width="100" height="100"></td>
+                            <td><%= data.hits[i].recipe.label %></td>
+                            <td><%= data.hits[i].recipe.yield %></td>
+                            <td><%= data.hits[i].recipe.totalTime %></td>
+                            <td><form action="/recipeDetails" method="POST">
+                                <% let d = [data.hits[i].recipe.label, data.hits[i].recipe.yield] %>
+                                <input type="hidden" id="detailsData" name="recipeData" value = " ">
+                                <input type="submit" value="View" onclick=dataExtract('{<%= data.hits[i].recipe.label %>}')>
+                                </form>
+                            </td>
+                        </tr>
+                    <% } %>
                 <% } %>
-            <% } %>
+            </tbody>
         </table>
+        
+        <script>
+            function dataExtract(val) {
+               console.log("Data: " + val)
+            }
+        </script>
     </body>
 </html>
