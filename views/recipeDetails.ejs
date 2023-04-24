@@ -2,6 +2,13 @@
 <!-- Specific recipe display for Slice or Dice -->
 <!-- Used to display information such as number of servings, -->
 <!-- estimated time to cook, and list of ingredients needed -->
+<%
+    let ing = recipeData.recipeIng.split(/(\d+\D+)/)
+    ing = ing.filter(function(f) {
+        return f != ""
+    })
+%>
+
 <html>
     <head>
         <title>SLICEorDICE</title>
@@ -30,17 +37,16 @@
     <body>
         <span>
             <!-- Title of recipe -->
-            <div id="title">TITLE</div> <!--REPLACE WITH NAME OF RECIPE-->
+            <div id="title"><%= recipeData.recipeName %></div>
             <!-- Back button -->
             <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
         </span>
         <ul>
-            <li>Servings: SERVINGS</li> <!--REPLACE FROM API-->
-            <li>Time: TIME</li><!--REPLACE FROM API-->
+            <li>Servings: <%= recipeData.recipeYield %> servings</li>
+            <li>Time: <%= recipeData.recipeTime %> minutes</li>
             <li>Ingredients:</li>
-            <li><% console.log(recipeData) %></li>
-            <% for(let i = 0; i < 5; i++) { %>
-                <dd>- <%= i %> ingredient </dd><!--REPLACE FROM API-->
+            <% for(let i = 0; i < ing.length; i++) { %>
+                <dd>-<%=ing[i]%></dd>
             <% } %>
         </ul>
     </body>

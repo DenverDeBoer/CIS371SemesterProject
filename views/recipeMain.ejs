@@ -62,10 +62,13 @@
                             <td><%= data.hits[i].recipe.label %></td>
                             <td><%= data.hits[i].recipe.yield %></td>
                             <td><%= data.hits[i].recipe.totalTime %></td>
+                            <% let iArray = data.hits[i].recipe.ingredientLines %>
                             <td><form action="/recipeDetails" method="POST">
-                                <% let d = [data.hits[i].recipe.label, data.hits[i].recipe.yield] %>
-                                <input type="hidden" id="detailsData" name="recipeData" value = " ">
-                                <input type="submit" value="View" onclick=dataExtract('{<%= data.hits[i].recipe.label %>}')>
+                                <input type="hidden" name="recipeName" value="<%=data.hits[i].recipe.label%>">
+                                <input type="hidden" name="recipeYield" value="<%=data.hits[i].recipe.yield%>">
+                                <input type="hidden" name="recipeTime" value="<%=data.hits[i].recipe.totalTime%>">
+                                <input type="hidden" name="recipeIng" value="<%= iArray %>">
+                                <input type="submit" name="submit" value="View">
                                 </form>
                             </td>
                         </tr>
@@ -73,11 +76,5 @@
                 <% } %>
             </tbody>
         </table>
-        
-        <script>
-            function dataExtract(val) {
-               console.log("Data: " + val)
-            }
-        </script>
     </body>
 </html>

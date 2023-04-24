@@ -18,8 +18,7 @@ class recipeController {
     //Display specific recipe details
     //TODO: isolate uniqueness from API call and link
     async showRecipe(req, res) {
-        console.log("CONTROL: " + req)
-        res.render('../views/recipeDetails', {recipeData: req.body.recipeData})
+        res.render('../views/recipeDetails', {recipeData: req.body})
     }
 
     //Display MyList page for user ingredients
@@ -43,6 +42,9 @@ class recipeController {
     //Send API request
     async request(req, res) {
         let results = await apiRecipe.searchName(req.body.textBoxName)
+        //for(let i = 0; i < results.hits[0].recipe.ingredients.length; i++) {
+        //    console.log("CONTROL RESULT: " + results.hits[0].recipe.ingredients[i].text)
+        //}
         res.render('../views/recipeMain', {data: results})
     }
 }
