@@ -14,18 +14,12 @@
                 text-align: center;
                 margin: 0 auto;
             }
-            .return {
-                padding: 10px 20px;
-                font-size: 16px;
-                margin: 10px;
-                transition-duration: 0.5s;
-                background-color: lightslategrey;
-                color: black;
-                /*border: 2px solid green;*/
+            form {
+                width: fit-content;
+                margin: 10 auto;
             }
-            .return:hover {
-                background-color: crimson;
-                color: white;
+            #divList {
+                margin-left: 30px;
             }
         </style>
     </head>
@@ -53,6 +47,7 @@
                 <input type="button" value="Remove" onClick=remove()><br>
             </span>
             <!-- Display the list of ingredients in the user's list -->
+            <label for="divList">Current List:</label><br>
             <div id="divList"></div>
             <input type="hidden" id="theList" name="mylist" value=" ">
             <div class="actions">
