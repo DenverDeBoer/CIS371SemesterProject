@@ -27,19 +27,17 @@
             }
         </style>
         <script>
-            /* Various form options will be disabled based on user's choice */
+            /* Various form options will be disabled based on user's choice DELETE NAMESEARCH */
             function choice() {
-                if(document.getElementById("nameSearch").checked) {
-                    document.getElementById("textBox").disabled = false;
-                    document.getElementById("someOp").disabled = true;
-                    document.getElementById("mostOp").disabled = true;
-                    document.getElementById("allOp").disabled = true;
-                }
-                else if(document.getElementById("ingredientSearch").checked) {
-                    document.getElementById("textBox").disabled = true;
+                if(document.getElementById("ingredientSearch").checked) {
                     document.getElementById("someOp").disabled = false;
                     document.getElementById("mostOp").disabled = false;
                     document.getElementById("allOp").disabled = false;
+                }
+                else {
+                    document.getElementById("someOp").disabled = true;
+                    document.getElementById("mostOp").disabled = true;
+                    document.getElementById("allOp").disabled = true;
                 }
             }
         </script>
@@ -62,13 +60,12 @@
         <form action="/recipeSearch" accept-charset="UTF-8" method="post">
             <!-- First option to allow user to search by name -->
             <span>
-                <input type="radio" id="nameSearch" name="inputType" value="nameInput" onchange="choice()">
-                <label for="nameSearch">Recipe Name:</label>
-                <input type="text" id="textBox" name="textBoxName" value=" ">
+                <label for="textBox">Recipe Name:</label>
+                <input type="text" id="textBox" name="textBoxName" value="">
             </span><br>
             <!-- Second option to allow user to search by ingredients -->
             <span>
-                <input type="radio" id="ingredientSearch" name="inputType" value="<%= uList %>" onchange="choice()">
+                <input type="checkbox" id="ingredientSearch" name="inputType" value="<%= uList %>" onchange="choice()">
                 <label for="ingredientSearch">MyList:</label><br>
                 <!-- Loop to display current values of myList in DB -->
                 <% let food = uList[0].ingred.split(",") %>
@@ -76,15 +73,15 @@
                     <span class="food">- <%= f %><br></span>
                 <% } %>
                 <!-- Section to allow user to decide how many ingredients need to match the recipe -->
+                <label for="numOptions">Select number of ingredients to use: </label><br>
                 <span id="numOptions">
-                    <input type="radio" class="food" id="someOp" name="percentage" value="50">
+                    <input type="radio" class="food" id="someOp" name="percentage" value="50" disabled="true">
                     <label for="someOp">Some</label>
-                    <input type="radio" class="food" id="mostOp" name="percentage" value="75">
+                    <input type="radio" class="food" id="mostOp" name="percentage" value="75" disabled="true">
                     <label for="mostOp">Most</label>
-                    <input type="radio" class="food" id="allOp" name="percentage" value="100">
+                    <input type="radio" class="food" id="allOp" name="percentage" value="100" disabled="true">
                     <label for="allOp">All</label>
                 </span>
-                <label for="numOptions">Select number of ingredients to use: </label>
             </span><br>
             <span>
                 <input type="submit" id="search" name="search" value="Search">
