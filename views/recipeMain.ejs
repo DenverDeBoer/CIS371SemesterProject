@@ -55,6 +55,7 @@
                 </tr>
             </thead>
             <tbody>
+                <!-- Test if there is data from the API to display -->
                 <% if(typeof data != 'undefined') { %>
                     <% for(let i = 0; i < data.hits.length; i++) { %>
                         <tr>
@@ -63,6 +64,7 @@
                             <td><%= data.hits[i].recipe.yield %></td>
                             <td><%= data.hits[i].recipe.totalTime %></td>
                             <% let iArray = data.hits[i].recipe.ingredientLines %>
+                            <!-- List of hidden fields to hold API data to pass to details page -->
                             <td><form action="/recipeDetails" method="POST">
                                 <input type="hidden" name="recipeName" value="<%=data.hits[i].recipe.label%>">
                                 <input type="hidden" name="recipeYield" value="<%=data.hits[i].recipe.yield%>">

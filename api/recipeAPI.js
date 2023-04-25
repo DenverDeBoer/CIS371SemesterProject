@@ -22,10 +22,6 @@ class recipeAPI {
     //Function used to created API URL based on recipe name
     static searchName(name) {
         let getAPI = apiURL + "&q=" + encodeURI(name)
-        //request(getAPI, function(error, response, body) {
-        //    let results = JSON.parse(body)
-        //    response(results)
-        //})
         return fetch(getAPI).then((res) => res.json())
     }
 }

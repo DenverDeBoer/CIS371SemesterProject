@@ -27,7 +27,7 @@
             }
         </style>
         <script>
-            /* Various form options will be disabled based on user's choice DELETE NAMESEARCH */
+            /* Form options enabled if user decides to filter based on MyList */
             function choice() {
                 if(document.getElementById("ingredientSearch").checked) {
                     document.getElementById("ingredientSearch").value = "checked";
@@ -57,7 +57,7 @@
             </div>
         </nav>
         <!-- Form to get recipe request data -->
-        <form action="/recipeSearch" accept-charset="UTF-8" method="post">
+        <form action="/recipeMain" accept-charset="UTF-8" method="post">
             <!-- First option to allow user to search by name -->
             <span>
                 <label for="textBox">Recipe Name:</label>

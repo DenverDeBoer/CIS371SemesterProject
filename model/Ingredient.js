@@ -12,9 +12,6 @@ class Ingredient {
             this.list = ingredients
         }
     }
-    add(ingredients) {
-        this.list = ingredients
-    }
 }
 
 module.exports = Ingredient

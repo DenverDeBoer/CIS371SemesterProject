@@ -47,7 +47,7 @@ app.get('/recipeSearch', (req, res) => {
 })
 
 //Post recipeSearch for API request
-app.post('/recipeSearch', (req, res) => {
+app.post('/recipeMain', (req, res) => {
     recipeController.request(req, res)
 })
 

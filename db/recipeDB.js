@@ -16,16 +16,8 @@ class recipeDB {
     //Create the DB with tables
     static initialize() {
         this.db.serialize(() => {
-            //let initialList = new Ingredient(" ")
-            //Genreate table to store MyList
-            //this.db.run('DROP TABLE UserList')
+            //Genreate table to store MyList if it doesn't already exist
             this.db.run('CREATE TABLE IF NOT EXISTS UserList (id TEXT PRIMARY KEY, ingred BLOB);')
-            //this.db.run('INSERT INTO UserList VALUES (?,?)', [initialList.id, initialList.list])
-            //this.db.all('SELECT * FROM UserList', (err, res) => {
-            //    res.forEach(r => {
-            //        console.log(r.ingred)
-            //    })
-            //})
         })
     }
 
