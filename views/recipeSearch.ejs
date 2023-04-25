@@ -30,13 +30,13 @@
             /* Various form options will be disabled based on user's choice DELETE NAMESEARCH */
             function choice() {
                 if(document.getElementById("ingredientSearch").checked) {
+                    document.getElementById("ingredientSearch").value = "checked";
                     document.getElementById("someOp").disabled = false;
-                    document.getElementById("mostOp").disabled = false;
                     document.getElementById("allOp").disabled = false;
                 }
                 else {
+                    document.getElementById("ingredientSearch").value = "unchecked";
                     document.getElementById("someOp").disabled = true;
-                    document.getElementById("mostOp").disabled = true;
                     document.getElementById("allOp").disabled = true;
                 }
             }
@@ -65,8 +65,9 @@
             </span><br>
             <!-- Second option to allow user to search by ingredients -->
             <span>
-                <input type="checkbox" id="ingredientSearch" name="inputType" value="<%= uList %>" onchange="choice()">
+                <input type="checkbox" id="ingredientSearch" name="inputChoice" value="unchecked" onchange="choice()">
                 <label for="ingredientSearch">MyList:</label><br>
+                <input type="hidden" name="myList" value="<%= uList[0].ingred %>">
                 <!-- Loop to display current values of myList in DB -->
                 <% let food = uList[0].ingred.split(",") %>
                 <% for(let f of food) { %>
@@ -75,11 +76,9 @@
                 <!-- Section to allow user to decide how many ingredients need to match the recipe -->
                 <label for="numOptions">Select number of ingredients to use: </label><br>
                 <span id="numOptions">
-                    <input type="radio" class="food" id="someOp" name="percentage" value="50" disabled="true">
+                    <input type="radio" class="food" id="someOp" name="filter" value="some" disabled="true">
                     <label for="someOp">Some</label>
-                    <input type="radio" class="food" id="mostOp" name="percentage" value="75" disabled="true">
-                    <label for="mostOp">Most</label>
-                    <input type="radio" class="food" id="allOp" name="percentage" value="100" disabled="true">
+                    <input type="radio" class="food" id="allOp" name="filter" value="all" disabled="true">
                     <label for="allOp">All</label>
                 </span>
             </span><br>

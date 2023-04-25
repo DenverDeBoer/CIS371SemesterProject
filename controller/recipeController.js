@@ -40,11 +40,28 @@ class recipeController {
     }
 
     //Send API request
+    //MYLIST array -> req.body.myList.split(",")
+    //API array -> results.hits[i].recipe.ingredientLines
     async request(req, res) {
-        let results = await apiRecipe.searchName(req.body.textBoxName)
-        //for(let i = 0; i < results.hits[0].recipe.ingredients.length; i++) {
-        //    console.log("CONTROL RESULT: " + results.hits[0].recipe.ingredients[i].text)
-        //}
+        let results = await apiRecipe.searchName(req.body.textBoxName)      //Retrieve API results for recipe name
+        if(req.body.inputChoice === "checked") {                            //Check if user is using MyList
+            let mlArray = req.body.myList.split(",")                        //Retrieve user's list if ingredients
+            for(let i = 0; i < results.hits.length; i++) {                  //Loop through API recipe results
+                let rArray = results.hits[i].recipe.ingredientLines         //Retrieve API recipe ingredient list
+                if(req.body.filter === "all") {                             //Check if user is using entire MyList
+                    let test = mlArray.every(x => rArray.includes(x))       //Tests if every element of MyList is in API list
+                    if(!test) {
+                        results.hits.splice(i,1)                            //If an ingredient is missing, remove recipe from list
+                    }
+                }
+                else if(req.body.filter === "some") {                       //Check if user is using partial MyList
+                    let test = mlArray.some(x => rArray.includes(x))        //Test if some ingredients in MyList appear in API list
+                    if(!test) {
+                        results.hits.splice(i,1)                            //If no matches, remove recipe from list
+                    }
+                }
+            }
+        }
         res.render('../views/recipeMain', {data: results})
     }
 }

@@ -44,41 +44,6 @@ class recipeDB {
         let newList = new Ingredient(ingredients)
         this.db.run('UPDATE UserList SET ingred = ? WHERE id = ?', [newList.list,newList.id])
     }
-
-    //Retrieve a single ingredient from MyList
-    //NOT SURE IF NEEDED
-    //static getIngred(id) {
-    //    return new Promise((resolve, reject) => {
-    //        this.db.all('SELECT * from UserList where id = ?', [id], (err, rows) => {
-    //            if(rows.length >= 1)
-    //                resolve(new Ingredient(rows[0]))
-    //            else
-    //                reject('ID: ' + id + " not found")
-    //        })
-    //    })
-    //}
-
-    //Add ingredient to MyList
-    //NOT SURE IF NEEDED
-    //static addIngred(ingredient) {
-    //    let newIngred = new Ingredient(ingredient)
-    //    return new Promise((resolve, _reject) => {
-    //        this.db.run('INSERT INTO UserList (ingred) VALUES (?)', [newIngred.name],
-    //        function(_err, _data) {
-    //            newIngred.id = this.lastID
-    //            resolve(newIngred)
-    //       })
-    //    })
-    //}
-
-    //Delete ingredient from MyList
-    //NOT SURE IF NEEDED
-    //static deleteIngred(ingredient) {
-    //    this.db.run('DELETE FROM UserList WHERE id=?', [ingredient.id],
-    //    function(_err, _data) {
-    //        return
-    //    })
-    //}
 }
 
 recipeDB.db = new sqlite3.Database('../recipe.sqlite')
