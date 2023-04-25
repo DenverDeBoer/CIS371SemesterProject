@@ -68,6 +68,7 @@
                                 <input type="hidden" name="recipeYield" value="<%=data.hits[i].recipe.yield%>">
                                 <input type="hidden" name="recipeTime" value="<%=data.hits[i].recipe.totalTime%>">
                                 <input type="hidden" name="recipeIng" value="<%= iArray %>">
+                                <input type="hidden" name="recipePic" value="<%= data.hits[i].recipe.images.REGULAR.url %>">
                                 <input type="submit" name="submit" value="View">
                                 </form>
                             </td>

@@ -11,6 +11,10 @@
 
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
         <title>SLICEorDICE</title>
         <style>
             #title {
@@ -19,18 +23,15 @@
                 text-align: center;
                 margin: 0 auto;
             }
-            .return {
-                padding: 10px 20px;
-                font-size: 16px;
-                margin: 10px;
-                transition-duration: 0.5s;
-                background-color: lightslategrey;
-                color: black;
-                /*border: 2px solid green;*/
+            img {
+                width: 300px;
+                height: 300px;
+                display: block;
+                margin: 10 auto;
             }
-            .return:hover {
-                background-color: crimson;
-                color: white;
+            ul {
+                display: table;
+                margin: 10 auto;
             }
         </style>
     </head>
@@ -38,9 +39,18 @@
         <span>
             <!-- Title of recipe -->
             <div id="title"><%= recipeData.recipeName %></div>
-            <!-- Back button -->
-            <a href=/recipeMain><input type="button" value="Back" class="right return"></a>
+            <!-- Nav bar -->
+            <nav class="navbar navbar-expand navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="/recipeSearch">Search</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/recipeMain">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/recipeList">MyList</a></li>
+                    </ul>
+                </div>
+            </nav>
         </span>
+        <img src="<%= recipeData.recipePic %>">
         <ul>
             <li>Servings: <%= recipeData.recipeYield %> servings</li>
             <li>Time: <%= recipeData.recipeTime %> minutes</li>
