@@ -2,11 +2,6 @@
  * Devner DeBoer
  * Database for recipes
  * Will hold user's custom list of ingredients
- * Methods:
- * -return all ingredients in list
- * -return single ingredient in list
- * -add ingredient to list
- * -delete ingredient from list
 */
 
 var sqlite3 = require("sqlite3").verbose()
