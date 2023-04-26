@@ -50,15 +50,17 @@
             <label for="divList">Current List:</label><br>
             <div id="divList"></div>
             <input type="hidden" id="theList" name="mylist" value=" ">
-            <div class="actions">
+            <span>
+                <input type="button" value="Clear" onClick=clearList()>
                 <input type="submit" name="commit" value="Submit">
-            </div>
+            </span>
         </form>
         <script>
             //Holds MyList retrieved from database
             let testList = ['<%-uList[0].ingred%>']
             let myList = []
-            myList = testList[0].split(",")
+            if(testList[0] != " ")
+                myList = testList[0].split(",")
             display()
 
             //Display the myListArray
@@ -78,6 +80,11 @@
                         myList.splice(i, 1)
                     }
                 }
+                display()
+            }
+            //Clear entire MyList array
+            function clearList() {
+                myList = [" "]
                 display()
             }
         </script>
