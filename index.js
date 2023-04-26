@@ -17,7 +17,7 @@ const recipeController = new RecipeController()
 
 //Instantiate server and use port 3000
 const app = express()
-const port = 3000
+const port = 443
 app.set('view engine', 'ejs')
 app.use(bodyParser.urlencoded({extended:true}))
 
