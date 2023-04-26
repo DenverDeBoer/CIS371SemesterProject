@@ -52,4 +52,4 @@ jobs:
         with:
           app-name: 'SliceOrDice'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0D0D0DF6C62643C490CE09AD452C6619 }}
-          package: ../index.js
+          package: ./index.js
